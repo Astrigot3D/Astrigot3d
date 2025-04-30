@@ -1,7 +1,7 @@
 title: Astrigot 3D
 description: Learn 3D Modeling & Game Asset Creation
-# baseurl: "" # Leave empty or set as needed for GitHub Pages
-# url: "" # Set your final GitHub Pages URL here
+baseurl: "/Astrigot3d"  # Note the leading slash
+url: "https://astrigot3d.github.io"
 
 collections:
   tutorials:
