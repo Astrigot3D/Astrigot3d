@@ -3,6 +3,7 @@ description: Learn 3D Modeling & Game Asset Creation
 baseurl: "/Astrigot3d"  # Note the leading slash
 url: "https://astrigot3d.github.io"
 
+
 collections:
   tutorials:
     output: true # Creates individual pages for each tutorial
