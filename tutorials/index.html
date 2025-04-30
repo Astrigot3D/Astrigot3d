@@ -1,0 +1,200 @@
+---
+layout: default
+title: Tutorials
+---
+<section class="page-header">
+    <div class="container">
+        <h1>3D Modeling & Game Asset Tutorials</h1>
+        <p>Step-by-step guides and in-depth articles to help you master 3D modeling and game asset creation</p>
+
+        <form class="tutorial-search">
+            <input type="text" placeholder="Search tutorials...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</section>
+
+<div class="container">
+    <div class="filter-bar">
+        
+        <div class="filter-options">
+            <div class="filter-group">
+                <span class="filter-label">Skill Level:</span>
+                <select class="filter-select">
+                    <option value="all">All Levels</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+            </div>
+            
+             <div class="filter-group">
+                <span class="filter-label">Software:</span>
+                <select class="filter-select">
+                    <option value="all">All Software</option>
+                    <option value="blender">Blender</option>
+                    <option value="maya">Maya</option>
+                    <option value="zbrush">ZBrush</option>
+                    <option value="substance">Substance Painter</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">Sort By:</span>
+                <select class="filter-select">
+                    <option value="newest">Newest First</option>
+                    <option value="popular">Most Popular</option>
+                    <option value="beginner-friendly">Beginner Friendly</option>
+                </select>
+            </div>
+
+            <div class="view-toggle">
+                <button class="view-btn active">Grid</button>
+                <button class="view-btn">List</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="tutorial-categories">
+        <div class="category-tabs">
+             
+            <div class="category-tab active">All Tutorials</div>
+            <div class="category-tab">3D Modeling</div>
+            <div class="category-tab">Texturing</div>
+            <div class="category-tab">Game Assets</div>
+            <div class="category-tab">Character Design</div>
+            <div class="category-tab">Environment Design</div>
+        </div>
+
+        
+        <h2 class="section-title">All <span>Tutorials</span></h2>
+        <div class="tutorials-grid">
+            {% assign sorted_tutorials = site.tutorials | sort: 'published_date' | reverse %}           
+            {% for tutorial in sorted_tutorials %}
+            <div class="tutorial-card"> 
+                <img src="{{ tutorial.image | default: '/api/placeholder/280/160' | relative_url }}" alt="{{ tutorial.title }}" class="tutorial-img">
+                <div class="tutorial-content">
+                    <div class="tutorial-meta">
+                        <div class="skill-level">
+                            
+                            <span></span>
+                            {% if tutorial.skill_level == "Intermediate" %}<span></span>
+                            {% elsif tutorial.skill_level == "Advanced" %}<span></span><span></span>
+                            {% endif %}
+                             {{ tutorial.skill_level | default: "N/A" }}
+                        </div>
+                         
+                        <div>{{ tutorial.read_time | default: "N/A" }}</div>
+                    </div>
+                    <h3>{{ tutorial.title }}</h3>
+                    <p>{{ tutorial.description }}</p>
+                    <div>
+                        {% for tag in tutorial.tags %}
+                            <span class="badge">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    <a href="{{ tutorial.url | relative_url }}" class="btn">Read Tutorial</a>
+                </div>
+            </div>
+            {% else %}
+              <p>No tutorials published yet.</p>
+            {% endfor %}
+
+        </div>
+        <div class="tutorials-list">
+            {% assign sorted_tutorials = site.tutorials | sort: 'published_date' | reverse %}
+            {% for tutorial in sorted_tutorials %}
+            <div class="tutorial-list-item">
+                 <img src="{{ tutorial.image | default: '/api/placeholder/200/160' | relative_url }}" alt="{{ tutorial.title }}" class="list-img">
+                 <div class="list-content">
+                    <h3>{{ tutorial.title }}</h3>
+                    <p>{{ tutorial.description }}</p>
+                    <div class="list-meta">
+                        <div class="list-badges">
+                            <span class="badge">{{ tutorial.skill_level | default: "N/A" }}</span>
+                            {% for tag in tutorial.tags %}
+                                <span class="badge">{{ tag }}</span>
+                            {% endfor %}
+                             <span class="badge">{{ tutorial.read_time | default: "N/A" }}</span>
+                        </div>
+                        <a href="{{ tutorial.url | relative_url }}" class="btn">Read Tutorial</a>
+                    </div>
+                 </div>
+            </div>
+             {% else %}
+               <p>No tutorials published yet.</p>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">    
+            <button class="pagination-btn">←</button>
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">3</button>
+            <button class="pagination-btn">→</button>
+        </div>
+    </section>
+</div>
+
+<section class="learning-paths">
+    <div class="container">
+        <h2 class="section-title">Learning <span>Paths</span></h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Follow these curated learning paths to master specific areas of 3D modeling and game asset creation</p>
+
+        <div class="path-cards">
+            <div class="path-card">
+                <img src="/api/placeholder/350/180" alt="Character Artist Path" class="path-img">
+                <div class="path-content">
+                    <h3>Character Artist Path</h3>
+                    <div class="path-details">
+                        <div>8 Tutorials</div>
+                        <div>Beginner to Advanced</div>
+                    </div>
+                    <p>Master all aspects of character creation from basic anatomy and modeling to advanced texturing and optimization for games.</p>
+                    <a href="#" class="btn">Start Learning Path</a>
+                </div>
+            </div>
+
+            <div class="path-card">
+                <img src="/api/placeholder/350/180" alt="Environment Artist Path" class="path-img">
+                <div class="path-content">
+                    <h3>Environment Artist Path</h3>
+                    <div class="path-details">
+                        <div>6 Tutorials</div>
+                        <div>Beginner to Advanced</div>
+                    </div>
+                    <p>Learn how to create compelling game environments, from modular asset creation to scene composition and optimization.</p>
+                    <a href="#" class="btn">Start Learning Path</a>
+                </div>
+            </div>
+
+            <div class="path-card">
+                <img src="/api/placeholder/350/180" alt="Texturing Specialist Path" class="path-img">
+                <div class="path-content">
+                    <h3>Texturing Specialist Path</h3>
+                    <div class="path-details">
+                        <div>7 Tutorials</div>
+                        <div>Beginner to Advanced</div>
+                    </div>
+                    <p>Dive deep into texturing and materials, from UV mapping fundamentals to advanced PBR workflows and stylized techniques.</p>
+                    <a href="#" class="btn">Start Learning Path</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter-section">
+    <div class="container">
+        <h2>Get New Tutorials in Your Inbox</h2>
+        <p>Subscribe to our newsletter to receive new tutorials, tips, and resources directly to your email.</p>
+        <form class="email-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+
+
+

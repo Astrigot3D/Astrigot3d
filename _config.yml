@@ -1,0 +1,13 @@
+title: Astrigot 3D
+description: Learn 3D Modeling & Game Asset Creation
+# baseurl: "" # Leave empty or set as needed for GitHub Pages
+# url: "" # Set your final GitHub Pages URL here
+
+collections:
+  tutorials:
+    output: true # Creates individual pages for each tutorial
+    permalink: /tutorials/:path/ # Defines the URL structure
+  podcasts: # Add this section
+    output: true # Set to true if you want individual pages for each episode
+    permalink: /podcast/:title/ # Optional: URL structure for episode pages
+    sort_by: date # Optional: Default sorting key

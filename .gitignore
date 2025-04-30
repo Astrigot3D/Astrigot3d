@@ -1,0 +1,10 @@
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+Gemfile.lock # Usually okay to commit, but can be ignored if preferred
+vendor/bundle/
+clean.py
+.venv/
+venv/

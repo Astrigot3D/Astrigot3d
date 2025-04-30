@@ -1,0 +1,146 @@
+---
+layout: default
+title: Home
+---
+
+<section class="hero">
+    <div class="container">
+        <h1>Learn 3D Modeling & Game Asset Creation</h1>
+        <p>Step-by-step guides, practical tutorials, and expert advice for beginners and intermediate 3D artists</p>
+        <a href="/tutorials/" class="btn">Get Started</a>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">What You'll <span>Learn</span></h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <img src="/api/placeholder/400/200" alt="3D Modeling Basics" class="feature-img">
+                <div class="feature-content">
+                    <h3>3D Modeling Fundamentals</h3>
+                    <p>Learn the core principles of creating 3D models using industry-standard techniques</p>
+                    <a href="/tutorials/modeling-fundamentals.html" class="btn">Explore</a>
+                </div>
+            </div>
+            <div class="feature-card">  
+                <img src="/api/placeholder/400/200" alt="Texturing" class="feature-img">
+                <div class="feature-content">
+                    <h3>Texturing & Materials</h3>
+                    <p>Master the art of creating realistic and stylized materials for your 3D assets</p>
+                    <a href="/tutorials/texturing-basics.html" class="btn">Explore</a>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img src="/api/placeholder/400/200" alt="Game Ready Assets" class="feature-img">
+                <div class="feature-content">
+                    <h3>Game-Ready Assets</h3>
+                    <p>Create optimized 3D models that perform well in real-time game engines</p>
+                    <a href="/tutorials/game-ready-assets.html" class="btn">Explore</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="latest-podcast">
+    <div class="container">
+        <h2 class="section-title">Latest <span>Podcast</span> Episode</h2>
+        
+        {% assign sorted_podcasts = site.podcasts | sort: 'date' | reverse %}
+        {% assign latest_podcast = sorted_podcasts | first %}
+
+        {% if latest_podcast %}
+        <div class="podcast-container">
+            <div class="podcast-cover">
+                <img src="{{ latest_podcast.cover_img | default: '/api/placeholder/300/300' | relative_url }}" alt="{{ latest_podcast.title }} Cover">
+            </div>
+            <div class="podcast-info">
+                <h3>{{ latest_podcast.title }}</h3>
+                <p>{{ latest_podcast.description }}</p>
+                
+                {% comment %} Check for the embed URL first {% endcomment %}
+                {% if latest_podcast.podcast_embed_url %}
+                    <div class="podcast-player-embed" style="margin-bottom: 1rem;">
+                         {{ latest_podcast.podcast_embed_url }} 
+                    </div>
+                {% elsif latest_podcast.audio_url %} 
+                {% comment %} Fallback to audio tag if embed not present but audio URL is {% endcomment %}
+                 <audio controls style="width: 100%; margin-bottom: 1rem;">
+                    <source src="{{ latest_podcast.audio_url | relative_url }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                 </audio>
+                {% else %}
+                    {% comment %} Message if neither embed nor audio URL is available {% endcomment %}
+                    <p><em>Player coming soon...</em></p>   
+                {% endif %}
+
+                <a href="{{ latest_podcast.url | relative_url }}" class="btn">Episode Details</a>
+                <a href="/podcast/" class="btn">View All Episodes</a> 
+            </div>
+        </div>
+        {% else %}
+            <p>No podcast episodes found yet.</p>
+        {% endif %}
+    </div>
+</section>
+
+<section class="popular-guides">
+    <div class="container">
+        <h2 class="section-title">Popular <span>Guides</span></h2>
+        <div class="guides-grid">
+            <div class="guide-card">
+                <img src="/api/placeholder/300/180" alt="Blender Basics" class="guide-img">
+                <div class="guide-content">
+                    <h3>Getting Started with Blender 4.0</h3>
+                    <p>A complete introduction to Blender's interface and basic modeling tools</p>
+                    <div class="guide-meta">
+                        <div class="skill-level">
+                            <span></span> Beginner
+                        </div>
+                        <div class="read-time">10 min read</div>
+                    </div>
+                </div>
+            </div>
+            <div class="guide-card">
+                <img src="/api/placeholder/300/180" alt="UV Mapping" class="guide-img">
+                <div class="guide-content">
+                    <h3>UV Mapping Fundamentals</h3>
+                    <p>Learn how to properly unwrap your 3D models for texturing</p>
+                    <div class="guide-meta">
+                        <div class="skill-level">
+                            <span></span><span></span> Intermediate
+                        </div>
+                        <div class="read-time">15 min read</div>
+                    </div>
+                </div>
+            </div>
+            <div class="guide-card">
+                <img src="/api/placeholder/300/180" alt="PBR Materials" class="guide-img">
+                <div class="guide-content">
+                    <h3>Creating PBR Materials from Scratch</h3>
+                    <p>A step-by-step guide to creating physically-based materials</p>
+                    <div class="guide-meta">
+                        <div class="skill-level">
+                            <span></span><span></span> Intermediate
+                        </div>
+                        <div class="read-time">20 min read</div>
+                    </div>
+                </div>
+            </div>
+            <div class="guide-card">
+                <img src="/api/placeholder/300/180" alt="Stylized Characters" class="guide-img">
+                <div class="guide-content">
+                    <h3>Stylized Character Modeling</h3>
+                    <p>Techniques for creating appealing stylized characters</p>
+                    <div class="guide-meta">
+                        <div class="skill-level">
+                            <span></span><span></span><span></span> Advanced
+                        </div>
+                        <div class="read-time">25 min read</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

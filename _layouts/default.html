@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }} | {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
+</head>
+<body>
+    {% include header.html %}
+
+    <main> 
+      {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    <script>
+        // Simple JavaScript to toggle between grid and list views
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewButtons = document.querySelectorAll('.view-btn');
+            const gridView = document.querySelector('.tutorials-grid');
+            const listView = document.querySelector('.tutorials-list');
+    
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    viewButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+    
+                    // Toggle view based on button text
+                    if (this.textContent === 'Grid') {
+                        gridView.style.display = 'grid';
+                        listView.style.display = 'none';
+                    } else {
+                        gridView.style.display = 'none';
+                        listView.style.display = 'flex';
+                    }
+                });
+            });
+    
+            // Category tabs functionality
+            const categoryTabs = document.querySelectorAll('.category-tab');
+    
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+    
+                    // In a real implementation, this would filter the tutorials
+                    // based on the selected category
+                });
+            });
+        });
+    </script>    
+</body>
+</html>
