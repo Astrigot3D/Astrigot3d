@@ -3,11 +3,11 @@
         <nav>
             <div class="logo">Astrigot<span>3D</span></div>
             <ul class="nav-links">
-                <li><a href="/">Home</a></li>
+                <li><a href="{{ '/' | relative_url }}"">Home</a>
                 <li><a href="{{ '/tutorials/' | relative_url }}">Tutorials</a></li>
-                <li><a href="/podcast/">Podcast</a></li>
-                <li><a href="/resources/ ">Resources</a></li>
-                <li><a href="/about/">About</a></li>
+                <li><a href="{{ '/podcast/' | relative_url }}">Podcast</a></li>
+                <li><a href="{{ '/resources/' | relative_url }}">Resources</a></li>
+                <li><a href="{{ '/about/' | relative_url }}">About</a></li>
             </ul>
         </nav>
     </div>
